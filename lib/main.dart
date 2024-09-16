@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             return BlocProvider<WeatherBlocBloc>(
               create: (context) =>
                   WeatherBlocBloc()..add(FetchWeather(snap.data as Position)),
-              child: const HomePage(),
+              child: HomePage(position: snap.data as Position),
             );
           } else {
             return const Scaffold(
@@ -71,5 +71,7 @@ Future<Position> _determinePosition() async {
 
   // When we reach here, permissions are granted and we can
   // continue accessing the position of the device.
-  return await Geolocator.getCurrentPosition();
+  return await Geolocator.getCurrentPosition(
+      locationSettings:
+          const LocationSettings(accuracy: LocationAccuracy.bestForNavigation));
 }
