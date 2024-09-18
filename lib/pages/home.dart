@@ -61,13 +61,10 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _refreshWeather(BuildContext context) async {
     // Trigger a new weather fetch
-    if (widget.position != null) {
-      context
-          .read<WeatherBlocBloc>()
-          .add(FetchWeather(widget.position as Position));
-    } else {
-      debugPrint('couldnt refresh');
-    }
+
+    context
+        .read<WeatherBlocBloc>()
+        .add(FetchWeather(widget.position as Position));
   }
 
   @override
@@ -166,7 +163,7 @@ class _HomePageState extends State<HomePage> {
 
                               //details box
                               Container(
-                                height: 170,
+                                // height: 170,
                                 decoration: BoxDecoration(
                                     color: const Color(0xffB4D2FF)
                                         .withOpacity(0.6),
